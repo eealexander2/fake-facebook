@@ -1,6 +1,8 @@
 class UsersController < ApplicationController
 
 	#remember it all so you can do it again 
+	#we don't want a user index page because we will not want to show all of the users 
+
 
 	def new
 		@user = User.new 
@@ -57,6 +59,6 @@ class UsersController < ApplicationController
 	end  
 
 	def edit_user_params 
-		params.require(:user).permit(:name, :email, :etc.)
+		params.require(:user).permit(:name, :email, :photo)
 	end 
 end 
