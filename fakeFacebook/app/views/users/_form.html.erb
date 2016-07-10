@@ -1,0 +1,29 @@
+<%=	form_for @user, html: {role: "form"} do |f| %> 
+	<%if @user.errors.any? %> 
+		<div> 
+			<h2><%=pluralize(@user.errors.count, "error") %> kept this user from being save </h2> 
+				<ul> 
+					<%@user.errors.full_messages.each do |error| %> 
+						<li><%=error%> 
+					<%end%>
+				</ul>
+		<div class = "row"> 
+			<%= f.label :name %> 
+			<%= f.text_field :name %> 
+		</div> 
+		<br> 
+		<div class = "row"> 
+			<%= f.label :email %> 
+			<%= f.text_field :email %>
+		</div> 
+		<div class = "row">
+			<%= f.label :photo %> 
+			<%= f.text_field :photo %>  
+	  </div> 
+	  <div class = "row">
+			<%= f.label :password %> 
+			<%= f.text_field :password %>  
+	  </div> 
+<%end%> 
+							
+

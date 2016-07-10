@@ -1,4 +1,13 @@
 Rails.application.routes.draw do
+
+  root 'users#new'
+  resources :users 
+  resources :relationships
+  resources :memberships
+
+
+  #and now, there is a woman who lives here. 
+
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".
 
