@@ -6,6 +6,9 @@ class CreatePosts < ActiveRecord::Migration
       t.integer :receiver_id
       t.integer :action_user_id
       t.integer :post_type
+    
+      t.timestamps(null: false)
+
     end
   end
 end

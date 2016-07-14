@@ -4,6 +4,7 @@ Rails.application.routes.draw do
   resources :users 
   resources :relationships
   resources :memberships
+  resources :posts 
 
 
   #and now, there is a woman who lives here. 

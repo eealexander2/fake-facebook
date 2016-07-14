@@ -1,16 +1,19 @@
 class Relationship < ActiveRecord::Base
-	belongs_to :action_user_id 
+	belongs_to :requester, class_name: "User", foreign_key: :requestor_id 
+	belongs_to :requested, class_name: "User"
+	#which is lame 
 
-	def friend_requester 
-		user = User.where(id: session[:user_id])
-		#there is going to be logic in here that requires us to figure out who actually performed the action of requesting the friend 
-
-	end 
-
-	def requested 
-		#figure out who received the request by understanding who posted the request? like i guess you could say the requested will be in the params and the requester will be the user, no matter what
-		# like unless someone else is signed in here 
-		
+	def self.accepted_relationships(user)
+		#here, you would just pass in the current user and hopefully get back what
+		# you are looking fo
+		friend_relationships = []
+		Relationship.all.each do |relationship|
+		if relationship.status == 2 && user.id == relationship.requestor_id || relationship.status == 2 && user.id == relationship.requested_id
+			friend_relationships << relationship
+		end 
+		end 
+	  friend_relationships 			
 	end 
 
 end
+

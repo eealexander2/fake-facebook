@@ -4,7 +4,9 @@ class CreateRelationships < ActiveRecord::Migration
       t.integer :requestor_id
       t.integer :requested_id
       t.integer :status
-      t.integer :action_user_id
+
+      t.timestamps(null: false)
+
     end
   end
 end
