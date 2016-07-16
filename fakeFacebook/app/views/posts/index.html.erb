@@ -1,6 +1,11 @@
-<h1> YO ITS ME BRUH </h1> 
+<h1> HOME FEED </h1> 
 <%@sent_posts.each do |post| %>
   <%= post.content %>
+  <br> 
+  <%post.comments.each do |comment|%> 
+  	"<%=comment.content %>"
+  	<br>
+  <%end%> 
 <%end%>  
 
 

@@ -4,6 +4,7 @@ class UsersController < ApplicationController
 	#we don't want a user index page because we will not want to show all of the users 
 	def new
 		@user = User.new 
+		#i could do this all day, like literally all day
 		#get request to get to page to create new user
 	end 
 
@@ -20,8 +21,14 @@ class UsersController < ApplicationController
 	end 
 
 	def show 
-		require_login 
 		@user = User.find(session[:user_id])
+		@posts = []
+		Post.all.each do |post|
+			if post.receiver_id == @user.id || post.poster_id == @user.id 	
+				@posts << post 
+			end
+		end  
+		p @posts 
 		# i don't think you need to render anything here. You are good to go 
 		# in my opinion
 	end 

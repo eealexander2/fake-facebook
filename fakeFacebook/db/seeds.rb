@@ -29,3 +29,6 @@ Post.create(poster_id: 8, receiver_id: 3, content: "I miss you!" )
 Post.create(poster_id: 8, receiver_id: 4, content: "I miss you!" )
 Post.create(poster_id: 8, receiver_id: 1, content: "I miss you!" )
 
+Comment.create(content: "OMG you are so right!", commentable_id: 2, commentable_type: "Post")
+Comment.create(content: "HELL NO!", commentable_id: 1, commentable_type: "Post")
+Comment.create(content: "AWESOME SAUCE!", commentable_id: 3, commentable_type: "Post")
