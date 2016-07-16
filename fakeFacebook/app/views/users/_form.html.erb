@@ -7,6 +7,7 @@
 						<li><%=error%> 
 					<%end%>
 				</ul>
+	<%end%> 
 		<div class = "row"> 
 			<%= f.label :name %> 
 			<%= f.text_field :name %> 
@@ -22,8 +23,15 @@
 	  </div> 
 	  <div class = "row">
 			<%= f.label :password %> 
-			<%= f.text_field :password %>  
-	  </div> 
+			<%= f.text_field :password_digest %>
+		</div> 
+		 <div class="row">
+      <div class="col-lg-12">
+       <%=f.submit "Register", class: "btn-block" %>
+       </div>
+     </div>
+    </div>
+
 <%end%> 
 							
 

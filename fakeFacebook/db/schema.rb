@@ -43,7 +43,7 @@ ActiveRecord::Schema.define(version: 20160709030534) do
     t.integer "post_type"
   end
 
-  create_table "relationships", force: :cascade do |t|
+  create_table "relationships", :force => true, :id => false do |t|
     t.integer "requestor_id"
     t.integer "requested_id"
     t.integer "status"

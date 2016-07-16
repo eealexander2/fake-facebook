@@ -2,29 +2,33 @@ class UsersController < ApplicationController
 
 	#remember it all so you can do it again 
 	#we don't want a user index page because we will not want to show all of the users 
-
-
 	def new
 		@user = User.new 
+		#i could do this all day, like literally all day
 		#get request to get to page to create new user
 	end 
 
 	def create
 		@user = User.new(user_params)
-		if @user && @user.authenticate 
-			@user = current_user 
+		if @user.save 
 			session[:user_id] = @user.id 
 			redirect_to posts_path 
 		else 
 			flash[:danger] = "Invalid Registration. Please try again!"
 			render "new"
-			# we want to render here so that we don't lose important information. 
+			# we do not need to set the current_user yet 
 		end 
 	end 
 
 	def show 
-		require_login 
 		@user = User.find(session[:user_id])
+		@posts = []
+		Post.all.each do |post|
+			if post.receiver_id == @user.id || post.poster_id == @user.id 	
+				@posts << post 
+			end
+		end  
+		p @posts 
 		# i don't think you need to render anything here. You are good to go 
 		# in my opinion
 	end 
@@ -55,7 +59,7 @@ class UsersController < ApplicationController
 	private 
 
 	def user_params 
-		params.require(:user).permit(:name, :email, :address, :photo)
+		params.require(:user).permit(:name, :email, :address, :photo, :password_digest)
 	end  
 
 	def edit_user_params 
