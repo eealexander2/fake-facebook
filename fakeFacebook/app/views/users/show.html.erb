@@ -1,6 +1,21 @@
-<h1><%=@user.name%></h1> 	
-<h2><% @posts.each do |post| %></h2> 
+<h1><%=@user.name%></h1>
+<h2><% @posts.each do |post| %></h2>
 		<%=post.content%>
-<%end%> 
+<%end%>
 
-<h2>Thanks so much for stopping by! </h2>  
+<h2>Thanks so much for stopping by! </h2>
+
+<%=form_for Post.new do |f|%>
+  <div class = "row">
+    <%= f.label :content %>
+    <%= f.text_field :content %>
+  </div>
+   <div class = "row">
+   <div class = "col-lg-12">
+    <%= f.submit "Register", class: 'btn-block' %>
+  </div>
+  </div>
+
+<% end %>
+
+
